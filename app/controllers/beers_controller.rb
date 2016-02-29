@@ -9,11 +9,11 @@ class BeersController < ApplicationController
     end
     
     def new
-        @beer = Beer.new
+        @beer = current_user.beers.build
     end
     
     def create
-        @beer = Beer.new(beer_params)
+        @beer = current_user.beers.build(beer_params)
         if @beer.save
             redirect_to root_path
         else
