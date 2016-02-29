@@ -1,0 +1,9 @@
+<h1>Beer index</h1>
+
+<% @beers.each do |beer| %>
+    <%= link_to beer.name, beer %><br />
+<% end %>
+
+<br />
+
+<%= link_to 'Add Beer', new_beer_path %>
