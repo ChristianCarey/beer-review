@@ -1,9 +1,21 @@
-<h1>Beer index</h1>
+<% if @beers.count == 0 %>
 
-<% @beers.each do |beer| %>
-    <%= link_to beer.name, beer %><br />
+    <h1>There are not beers currently in this category.</h1>
+    
+<% else %>
+    
+    <% if params[:category].blank? == false %>
+        <h1 class="current-category"><%= pluralize(@beers.count, params[:category])%></h1>
+    <% end %>
+    
+    <% @beers.each do |beer| %>
+    
+        <%= link_to beer.name, beer %><br />
+        
+    <% end %>
+
+    <br />
+
+    <%= link_to 'Add Beer', new_beer_path %>
+
 <% end %>
-
-<br />
-
-<%= link_to 'Add Beer', new_beer_path %>

@@ -15,3 +15,13 @@ beers = Beer.create([
     {name: 'Rhinegeist Puma', description: 'Elegant and subtle, this hoppy pilsner balances bready malts with striking noble hops. Puma pilsner pounces with golden brilliance as floral aromatics punctuate each sip.'},
     {name: 'Rhinegeist Pure Fury', description:'Intensely hopped yet restrained, bright and tropical fruit forward American Pale Ale with Amarillo, Mosaic and Cascade hops. An essay in finesse.'}
     ])
+    
+categories = Category.create([
+    {name: 'IPA (India Pale Ale)'},
+    {name: 'Blonde Ale'},
+    {name: 'Pale Ale'},
+    {name: 'Porter'},
+    {name: 'Oktoberfest'},
+    {name: 'Holiday Ale'},
+    {name: 'Pilsner'}
+    ])
