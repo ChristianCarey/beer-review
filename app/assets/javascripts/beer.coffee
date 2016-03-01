@@ -4,7 +4,7 @@
 
 $ ->
   # enable chosen js
-  $('#beer_category_id, #beer_brewery_id, #category_id, #brewery_id').chosen
+  $('.chosen, #beer_category_id, #beer_brewery_id, #brewery_id, #category_id').chosen
     allow_single_deselect: true
     no_results_text: 'No results matched'
     width: '200px'
