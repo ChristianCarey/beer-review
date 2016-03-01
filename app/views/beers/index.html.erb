@@ -8,11 +8,17 @@
         <h1 class="current-category"><%= pluralize(@beers.count, params[:category])%></h1>
     <% end %>
     
-    <% @beers.each do |beer| %>
+    <div class="row">
     
-        <%= link_to beer.name, beer %><br />
-        
-    <% end %>
+        <% @beers.each do |beer| %>
+            <div class="col-md-3">
+                <a href="/beers/<%= beer.id %>">
+					<%= image_tag beer.beer_img.url(:beer_index), class: "beer" %>
+				</a>
+            </div>
+        <% end %>
+    
+    </div>
 
     <br />
 

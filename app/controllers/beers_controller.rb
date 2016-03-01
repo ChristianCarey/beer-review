@@ -1,5 +1,6 @@
 class BeersController < ApplicationController
     before_action :find_beer, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :edit]
     
     def index
         if params[:category].blank?
@@ -11,6 +12,11 @@ class BeersController < ApplicationController
     end
     
     def show
+        if @beer.reviews.blank?
+            @average_review = 0
+        else
+            @average_review = @beer.reviews.average(:rating).round(2)
+        end
     end
     
     def new
@@ -50,7 +56,7 @@ class BeersController < ApplicationController
     private
         
         def beer_params
-            params.require(:beer).permit(:name, :description, :category_id)
+            params.require(:beer).permit(:name, :description, :category_id, :beer_img)
         end
         
         def find_beer
