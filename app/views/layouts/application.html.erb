@@ -9,14 +9,14 @@
 <body>
   
   <%= render 'layouts/navbar' %>
-  <% if flash[:notice ]%>
-    <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if flash[:alert ]%>
-    <p class="alert"><%= alert %></p>
-  <% end %>
-  
+
   <div class="container">
+    <% if flash[:notice ]%>
+      <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+    <% end %>
+    <% if flash[:alert ]%>
+      <div class="alert alert-danger text-center" role="alert"><%= alert %></div>
+    <% end %>
     <%= yield %>
   </div>
 

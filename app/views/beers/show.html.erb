@@ -1,15 +1,26 @@
 <div class="row">
     <div class="col-md-4">
-        <%= image_tag(@beer.beer_img.url(:beer_show), class: 'beer-show') %>
+        <div class="beer-show">
+            <%= image_tag(@beer.beer_img.url(:beer_show), class: 'beer-img') %>
+        </div>
     </div>
     <div class="col-md-8">
         <div class="beer-info">
             <h2 class="beer-title"><%= @beer.name %></h2>
-            <h3 class="beer-category"><%= @beer.category.name %></h3>
+            <h3 class="beer-category"><%= link_to @beer.category.name, beers_path(category: @beer.category.name)%></h3>
             <h2 class="avg-rating">Average Rating</h2>
             <div class="average-review-rating" data-score="<%= @average_review %>"></div>
             <span class="number-of-reviews">Based on <%= pluralize(@beer.reviews.count, 'review') %>.</span>
             <p class="beer-desc"><%= @beer.description %></p>
+            <div class="links btn-group">
+    <% if user_signed_in? %>
+        <% if @beer.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_beer_path(@beer), class: 'btn btn-custom' %> 
+            <%= link_to 'Delete', @beer, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-custom' %>
+        <% end %>
+    <% end %>
+    <%= link_to 'Back', root_path, class: 'btn btn-custom' %>
+</div>
         </div>
     </div>
 </div>
@@ -26,15 +37,7 @@
     </div>
 </div>
 
-<div class="links btn-group">
-    <% if user_signed_in? %>
-        <% if @beer.user_id == current_user.id %>
-            <%= link_to 'Edit', edit_beer_path(@beer), class: 'btn btn-custom' %> 
-            <%= link_to 'Delete', @beer, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-custom' %>
-        <% end %>
-    <% end %>
-    <%= link_to 'Back', root_path, class: 'btn btn-custom' %>
-</div>
+
 
 <script>
     $('.review-rating, .average-review-rating').raty({
