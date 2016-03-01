@@ -22,11 +22,13 @@ class BeersController < ApplicationController
     def new
         @beer = current_user.beers.build
         @categories = Category.all.map{ |c| [c.name, c.id] }
+        @breweries = Brewery.all.map{ |c| [c.name, c.id] }
     end
     
     def create
         @beer = current_user.beers.build(beer_params)
         @beer.category_id = params[:category_id]
+        @beer.brewery_id = params[:brewery_id]
         
         if @beer.save
             redirect_to root_path
@@ -37,10 +39,12 @@ class BeersController < ApplicationController
     
     def edit
         @categories = Category.all.map{ |c| [c.name, c.id] }
+        @breweries = Brewery.all.map{ |c| [c.name, c.id] }
     end
     
     def update
         @beer.category_id = params[:category_id]
+        @beer.brewery_id = params[:brewery_id]
         if @beer.update(beer_params)
             redirect_to @beer
         else
@@ -56,7 +60,7 @@ class BeersController < ApplicationController
     private
         
         def beer_params
-            params.require(:beer).permit(:name, :description, :category_id, :beer_img)
+            params.require(:beer).permit(:name, :description, :category_id, :beer_img, :brewery_id)
         end
         
         def find_beer

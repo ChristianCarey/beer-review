@@ -12,9 +12,11 @@ gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'paperclip', '~> 4.3', '>= 4.3.5'
+gem 'chosen-rails', '~> 1.4', '>= 1.4.3'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
+  gem "better_errors"
   gem 'byebug'
 end
 

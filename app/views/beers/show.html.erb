@@ -7,7 +7,10 @@
     <div class="col-md-8">
         <div class="beer-info">
             <h2 class="beer-title"><%= @beer.name %></h2>
-            <h3 class="beer-category"><%= link_to @beer.category.name, beers_path(category: @beer.category.name)%></h3>
+            <h3 class="beer-category">
+                <%= link_to @beer.category.name, beers_path(category: @beer.category.name) %> - 
+                <%= link_to @beer.brewery.name, beers_path(brewery: @beer.brewery.name) %>
+            </h3>
             <h2 class="avg-rating">Average Rating</h2>
             <div class="average-review-rating" data-score="<%= @average_review %>"></div>
             <span class="number-of-reviews">Based on <%= pluralize(@beer.reviews.count, 'review') %>.</span>
